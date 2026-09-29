@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rifka Amalia - Harmony & Vibes</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts (Poppins & Playfair Display) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        sage: {
+                            50: '#f4f8f5',
+                            100: '#e3ede5',
+                            200: '#c5dbc9',
+                            300: '#9ec1a4',
+                            400: '#75a37d',
+                            500: '#55875d',
+                            600: '#416c48',
+                            700: '#35563b',
+                        },
+                        blush: {
+                            50: '#fff5f7',
+                            100: '#ffeef2',
+                            200: '#ffd6e0',
+                            300: '#fbb3c5',
+                            400: '#f783a0',
+                            500: '#ec4875',
+                        },
+                        roseGold: '#e0a996',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Smooth Scroll & Glassmorphism */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        .glass-card {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .glass-card-dark {
+            background: rgba(244, 248, 245, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(197, 219, 201, 0.4);
+        }
+
+        /* Floating Animation for Music Notes */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+            50% { transform: translateY(-15px) rotate(10deg); opacity: 1; }
+            100% { transform: translateY(0px) rotate(0deg); opacity: 0.8; }
+        }
+
+        .animate-float-1 { animation: float 4s ease-in-out infinite; }
+        .animate-float-2 { animation: float 5s ease-in-out 1s infinite; }
+        .animate-float-3 { animation: float 3.5s ease-in-out 0.5s infinite; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f4f8f5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #9ec1a4;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #75a37d;
+        }
+
+        /* Audio Visualizer Bar Animation */
+        .equalizer-bar {
+            animation: bounce 1.2s ease-in-out infinite alternate;
+        }
+        .equalizer-bar:nth-child(2) { animation-delay: 0.2s; }
+        .equalizer-bar:nth-child(3) { animation-delay: 0.4s; }
+        .equalizer-bar:nth-child(4) { animation-delay: 0.1s; }
+        .equalizer-bar:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes bounce {
+            0% { height: 10%; }
+            100% { height: 100%; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-sage-50 via-blush-50 to-sage-100 text-gray-800 font-sans min-h-screen relative selection:bg-blush-200 selection:text-sage-700">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass-card shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-full bg-sage-300 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform">
+                        <i class="fa-solid font-bold fa-music text-sm"></i>
+                    </div>
+                    <span class="font-serif font-bold text-xl sm:text-2xl text-sage-700 tracking-wide">
+                        Rifka<span class="text-blush-400 font-sans font-light">Amalia</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Menu Nav -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
+                    <a href="#home" class="hover:text-sage-600 transition-colors">Beranda</a>
+                    <a href="#about" class="hover:text-sage-600 transition-colors">Tentang Saya</a>
+                    <a href="#music-player" class="hover:text-sage-600 transition-colors">Pemutar Musik</a>
+                    <a href="#mood-vibe" class="hover:text-sage-600 transition-colors">Rekomendasi Mood</a>
+                    <a href="#blog" class="hover:text-sage-600 transition-colors">Blog & Artikel</a>
+                </div>
+
+                <!-- Right Actions -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="https://www.instagram.com/strlv_nayy?stkn=amR1Z24xNnd4ZGVhHALO" target="_blank" rel="noopener noreferrer" 
+                       class="px-4 py-2 rounded-full bg-gradient-to-r from-blush-300 to-sage-300 text-sage-700 font-medium text-sm flex items-center gap-2 shadow-sm hover:shadow-md hover:scale-105 transition-all">
+                        <i class="fa-brands fa-instagram text-lg"></i>
+                        <span>Ikuti di IG</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg text-sage-700 hover:bg-sage-100 focus:outline-none">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden glass-card border-t border-sage-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block py-2 text-gray-700 hover:text-sage-600 font-medium border-b border-sage-50">Beranda</a>
+            <a href="#about" class="block py-2 text-gray-700 hover:text-sage-600 font-medium border-b border-sage-50">Tentang Saya</a>
+            <a href="#music-player" class="block py-2 text-gray-700 hover:text-sage-600 font-medium border-b border-sage-50">Pemutar Musik</a>
+            <a href="#mood-vibe" class="block py-2 text-gray-700 hover:text-sage-600 font-medium border-b border-sage-50">Rekomendasi Mood</a>
+            <a href="#blog" class="block py-2 text-gray-700 hover:text-sage-600 font-medium border-b border-sage-50">Blog & Artikel</a>
+            <a href="https://www.instagram.com/strlv_nayy?stkn=amR1Z24xNnd4ZGVhHALO" target="_blank" rel="noopener noreferrer" 
+               class="mt-2 w-full py-2.5 rounded-full bg-sage-400 text-white font-medium text-center flex items-center justify-center gap-2">
+                <i class="fa-brands fa-instagram"></i>
+                <span>Instagram @strlv_nayy</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden relative">
+        <!-- Floating Music Decorative Elements -->
+        <div class="absolute top-24 left-10 text-sage-300 text-3xl animate-float-1 pointer-events-none">
+            <i class="fa-solid fa-music"></i>
+        </div>
+        <div class="absolute top-48 right-16 text-blush-300 text-4xl animate-float-2 pointer-events-none">
+            <i class="fa-solid fa-compact-disc"></i>
+        </div>
+        <div class="absolute bottom-12 left-1/4 text-sage-200 text-2xl animate-float-3 pointer-events-none">
+            <i class="fa-solid fa-headphones"></i>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content Header -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blush-100 border border-blush-200 text-sage-700 text-xs sm:text-sm font-medium">
+                        <span class="w-2 h-2 rounded-full bg-blush-400 animate-ping"></span>
+                        <span>Selamat Datang di Dunia Musik Saya ✨</span>
+                    </div>
+
+                    <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-sage-700 leading-tight">
+                        Musik, Suasana Hati, <br class="hidden sm:inline">
+                        <span class="italic text-blush-400 font-normal">& Cerita Kehidupan</span>
+                    </h1>
+
+                    <p class="text-gray-600 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                        Halo! Saya <strong class="text-sage-700">Rifka Amalia</strong>. Website ini adalah tempat saya membagikan kecintaan pada musik, lagu-lagu favorit, cerita harian, serta melodi yang senantiasa menemani perjalanan hidup saya.
+                    </p>
+
+                    <div class="pt-2 flex flex-wrap gap-4 justify-center lg:justify-start">
+                        <a href="#blog" class="px-7 py-3.5 rounded-full bg-sage-500 hover:bg-sage-600 text-white font-medium shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2">
+                            <span>Jelajahi Blog</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                        <a href="#music-player" class="px-7 py-3.5 rounded-full glass-card hover:bg-white text-sage-700 border border-sage-200 font-medium shadow-sm transition-all flex items-center gap-2">
+                            <i class="fa-solid fa-play text-blush-400"></i>
+                            <span>Dengarkan Musik</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Photo Profile Frame -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative group">
+                        <!-- Glowing Animated Backdrop -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-sage-300 via-blush-200 to-roseGold rounded-3xl blur-lg opacity-70 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse"></div>
+                        
+                        <!-- Photo Frame Container -->
+                        <div class="relative w-64 h-80 sm:w-72 sm:h-96 rounded-3xl overflow-hidden glass-card p-2 shadow-2xl border-2 border-white/80">
+                            <img src="https://lh3.googleusercontent.com/d/1DnYUUIUxNYjuBwVrU8vbrRtek8Lm5wY5" 
+                                 alt="Rifka Amalia" 
+                                 class="w-full h-full object-cover rounded-2xl transform group-hover:scale-105 transition-transform duration-500"
+                                 onerror="this.onerror=null; this.src='https://placehold.co/400x500/e3ede5/35563b?text=Rifka+Amalia';">
+                            
+                            <!-- Overlay Badge -->
+                            <div class="absolute bottom-4 left-4 right-4 p-3 rounded-xl glass-card border border-white/60 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-blush-300 flex items-center justify-center text-sage-700 flex-shrink-0">
+                                    <i class="fa-solid fa-headphones"></i>
+                                </div>
+                                <div class="text-left overflow-hidden">
+                                    <p class="text-xs text-gray-500 font-medium">Sedang mendengarkan</p>
+                                    <p class="text-xs font-semibold text-sage-700 truncate">Acoustic Chill & Lofi Vibes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white/50 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-8 sm:p-12 shadow-sm border border-sage-100">
+                <div class="text-center max-w-3xl mx-auto space-y-6">
+                    <span class="text-xs font-bold tracking-widest text-blush-400 uppercase">Mengenal Lebih Dekat</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-sage-700">Kenapa Saya Sangat Menyukai Musik?</h2>
+                    
+                    <p class="text-gray-600 leading-relaxed text-base sm:text-lg">
+                        Bagi saya, <span class="text-sage-600 font-semibold">musik bukan sekadar suara</span>, melainkan teman cerita di setiap momen. Musik dapat membuat saya merasa <strong class="text-sage-700">lebih rileks</strong> saat pikiran jenuh, menjadi sarana yang <strong class="text-sage-700">menghibur</strong> di waktu senggang, serta sangat efektif untuk <strong class="text-sage-700">memperbaiki suasana hati (mood)</strong> dalam sekejap.
+                    </p>
+                    <p class="text-gray-600 leading-relaxed text-base sm:text-lg">
+                        Saya juga sangat senang mengeksplorasi berbagai jenis aliran musik dan menemukan lagu-lagu baru yang menyentuh hati. Setiap genre menyimpan emosi dan keindahannya tersendiri!
+                    </p>
+
+                    <!-- Feature Cards Grid -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6 text-left">
+                        <div class="p-5 rounded-2xl bg-sage-50/80 border border-sage-100 hover:shadow-md transition-all">
+                            <div class="w-10 h-10 rounded-xl bg-sage-200 flex items-center justify-center text-sage-700 mb-3">
+                                <i class="fa-solid fa-spa"></i>
+                            </div>
+                            <h3 class="font-bold text-sage-700 text-lg mb-1">Rileks & Tenang</h3>
+                            <p class="text-xs text-gray-500">Membantu menenangkan pikiran dan meredakan rasa lelah setelah seharian beraktivitas.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-blush-50/80 border border-blush-100 hover:shadow-md transition-all">
+                            <div class="w-10 h-10 rounded-xl bg-blush-200 flex items-center justify-center text-sage-700 mb-3">
+                                <i class="fa-solid fa-face-smile"></i>
+                            </div>
+                            <h3 class="font-bold text-sage-700 text-lg mb-1">Mood Booster</h3>
+                            <p class="text-xs text-gray-500">Mengubah hari yang redup menjadi lebih ceria melalui irama favorit.</p>
+                        </div>
+
+                        <div class="p-5 rounded-2xl bg-sage-50/80 border border-sage-100 hover:shadow-md transition-all">
+                            <div class="w-10 h-10 rounded-xl bg-roseGold/30 flex items-center justify-center text-sage-700 mb-3">
+                                <i class="fa-solid fa-compass"></i>
+                            </div>
+                            <h3 class="font-bold text-sage-700 text-lg mb-1">Eksplorasi Lagu</h3>
+                            <p class="text-xs text-gray-500">Selalu bersemangat menemukan genre baru & lagu underrated yang ramah di telinga.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Music Player Section -->
+    <section id="music-player" class="py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold tracking-widest text-sage-500 uppercase">Audio Experience</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-sage-700 mt-1">Pemutar Musik Pilihan Rifka</h2>
+                <p class="text-gray-500 text-sm mt-2">Dengarkan beberapa nada santai untuk menemani waktu membaca Anda</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Main Player Card -->
+                <div class="lg:col-span-7">
+                    <div class="glass-card rounded-3xl p-6 sm:p-8 shadow-xl border border-sage-200 relative overflow-hidden">
+                        <!-- Background Glow Effect -->
+                        <div class="absolute -top-12 -right-12 w-48 h-48 bg-blush-200 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
+
+                        <div class="flex flex-col sm:flex-row items-center gap-6">
+                            <!-- Track Thumbnail -->
+                            <div class="relative w-32 h-32 sm:w-40 sm:h-40 rounded-2xl overflow-hidden shadow-lg flex-shrink-0 group">
+                                <img id="playerCover" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80" alt="Album Cover" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                                    <i class="fa-solid fa-music text-white text-2xl"></i>
+                                </div>
+                            </div>
+
+                            <!-- Track Details -->
+                            <div class="flex-grow text-center sm:text-left space-y-2 w-full">
+                                <span id="playerGenre" class="px-3 py-1 rounded-full bg-sage-100 text-sage-700 text-xs font-semibold">Acoustic Chill</span>
+                                <h3 id="playerTitle" class="font-serif text-2xl font-bold text-sage-700">Sunset Harmony</h3>
+                                <p id="playerArtist" class="text-sm text-gray-500 font-medium">Acoustic Beats Studio</p>
+
+                                <!-- Visualizer Bars -->
+                                <div class="flex items-center justify-center sm:justify-start gap-1 h-6 my-2">
+                                    <div class="w-1 bg-sage-400 rounded-full equalizer-bar h-2"></div>
+                                    <div class="w-1 bg-sage-500 rounded-full equalizer-bar h-4"></div>
+                                    <div class="w-1 bg-blush-400 rounded-full equalizer-bar h-3"></div>
+                                    <div class="w-1 bg-sage-400 rounded-full equalizer-bar h-5"></div>
+                                    <div class="w-1 bg-sage-300 rounded-full equalizer-bar h-2"></div>
+                                </div>
+
+                                <!-- Progress Bar -->
+                                <div class="space-y-1">
+                                    <div class="w-full bg-sage-100 h-2 rounded-full cursor-pointer overflow-hidden" id="progressBarContainer">
+                                        <div id="progressBar" class="bg-gradient-to-r from-sage-400 to-blush-400 h-full w-0 transition-all duration-200"></div>
+                                    </div>
+                                    <div class="flex justify-between text-xs text-gray-400 font-mono">
+                                        <span id="currentTime">0:00</span>
+                                        <span id="duration">2:30</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Player Controls -->
+                        <div class="mt-6 pt-6 border-t border-sage-100 flex items-center justify-between">
+                            <button id="prevBtn" class="p-3 text-sage-600 hover:text-sage-800 hover:bg-sage-100 rounded-full transition-all">
+                                <i class="fa-solid fa-backward-step text-xl"></i>
+                            </button>
+
+                            <button id="playPauseBtn" class="w-14 h-14 rounded-full bg-gradient-to-r from-sage-400 to-sage-500 text-white shadow-lg hover:scale-105 active:scale-95 transition-all flex items-center justify-center">
+                                <i id="playIcon" class="fa-solid fa-play text-xl ml-1"></i>
+                            </button>
+
+                            <button id="nextBtn" class="p-3 text-sage-600 hover:text-sage-800 hover:bg-sage-100 rounded-full transition-all">
+                                <i class="fa-solid fa-forward-step text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Playlist Selector -->
+                <div class="lg:col-span-5">
+                    <div class="glass-card rounded-3xl p-6 shadow-sm border border-sage-100 space-y-3">
+                        <h3 class="font-serif font-bold text-lg text-sage-700 mb-4 flex items-center justify-between">
+                            <span>Daftar Putar Favorit</span>
+                            <i class="fa-solid fa-list-ul text-blush-400 text-sm"></i>
+                        </h3>
+
+                        <div id="playlistItems" class="space-y-2 max-h-72 overflow-y-auto pr-1">
+                            <!-- JS populated playlist items -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Mood & Vibe Recommendation Widget -->
+    <section id="mood-vibe" class="py-16 bg-gradient-to-r from-blush-100/60 via-sage-50/80 to-blush-50/60">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <span class="text-xs font-bold tracking-widest text-sage-600 uppercase">Interaktif</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-sage-700 mt-1 mb-2">Bagaimana Suasana Hatimu Hari Ini?</h2>
+            <p class="text-gray-500 text-sm mb-8">Pilih mood kamu saat ini dan biarkan Rifka merekomendasikan musik & artikel yang pas!</p>
+
+            <!-- Mood Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mb-8">
+                <button onclick="selectMood('relaxed')" class="mood-btn px-5 py-3 rounded-2xl glass-card hover:bg-sage-200 border border-sage-200 text-sage-700 font-medium text-sm flex items-center gap-2 shadow-sm transition-all active" data-mood="relaxed">
+                    <span class="text-xl">🌿</span> Rileks & Santai
+                </button>
+                <button onclick="selectMood('happy')" class="mood-btn px-5 py-3 rounded-2xl glass-card hover:bg-sage-200 border border-sage-200 text-sage-700 font-medium text-sm flex items-center gap-2 shadow-sm transition-all" data-mood="happy">
+                    <span class="text-xl">✨</span> Ceria & Bahagia
+                </button>
+                <button onclick="selectMood('energetic')" class="mood-btn px-5 py-3 rounded-2xl glass-card hover:bg-sage-200 border border-sage-200 text-sage-700 font-medium text-sm flex items-center gap-2 shadow-sm transition-all" data-mood="energetic">
+                    <span class="text-xl">⚡</span> Bersemangat
+                </button>
+                <button onclick="selectMood('melancholic')" class="mood-btn px-5 py-3 rounded-2xl glass-card hover:bg-sage-200 border border-sage-200 text-sage-700 font-medium text-sm flex items-center gap-2 shadow-sm transition-all" data-mood="melancholic">
+                    <span class="text-xl">🌧️</span> Syahdu / Galau
+                </button>
+            </div>
+
+            <!-- Mood Result Box -->
+            <div id="moodResult" class="glass-card rounded-3xl p-6 sm:p-8 border border-sage-200 shadow-md text-left transition-all duration-300">
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <div id="moodIcon" class="w-16 h-16 rounded-2xl bg-sage-200 flex items-center justify-center text-3xl flex-shrink-0">
+                        🌿
+                    </div>
+                    <div class="space-y-2 text-center sm:text-left">
+                        <h4 id="moodTitle" class="font-serif font-bold text-xl text-sage-700">Rekomendasi Rileks & Santai</h4>
+                        <p id="moodDesc" class="text-sm text-gray-600 leading-relaxed">
+                            Nikmati alunan musik acoustic indie soft & lofi beat untuk mengistirahatkan pikiran. Cocok dinikmati sambil minum teh hangat di sore hari.
+                        </p>
+                        <div class="pt-2 flex flex-wrap gap-2 justify-center sm:justify-start">
+                            <span id="moodGenreTag" class="px-3 py-1 rounded-full bg-blush-100 text-sage-700 text-xs font-semibold">Genre: Acoustic, Lofi, Ambient</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-xs font-bold tracking-widest text-sage-600 uppercase">Catatan & Cerita</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-sage-700 mt-1">Blog Rifka Amalia</h2>
+                </div>
+
+                <!-- Add New Post Button -->
+                <button onclick="openAddPostModal()" class="px-5 py-2.5 rounded-full bg-sage-500 hover:bg-sage-600 text-white font-medium text-sm shadow-md hover:shadow-lg transition-all flex items-center gap-2 self-start md:self-auto">
+                    <i class="fa-solid fa-plus text-xs"></i>
+                    <span>Tulis Artikel Baru</span>
+                </button>
+            </div>
+
+            <!-- Categories Filter -->
+            <div class="flex flex-wrap gap-2 mb-8" id="categoryFilters">
+                <button onclick="filterCategory('all')" class="cat-filter-btn px-4 py-2 rounded-full bg-sage-500 text-white text-xs font-medium shadow-sm transition-all" data-cat="all">
+                    Semua
+                </button>
+                <button onclick="filterCategory('Musik')" class="cat-filter-btn px-4 py-2 rounded-full bg-white text-gray-600 hover:bg-sage-100 text-xs font-medium shadow-sm transition-all" data-cat="Musik">
+                    🎵 Musik & Lagu
+                </button>
+                <button onclick="filterCategory('Mood')" class="cat-filter-btn px-4 py-2 rounded-full bg-white text-gray-600 hover:bg-sage-100 text-xs font-medium shadow-sm transition-all" data-cat="Mood">
+                    🌸 Suasana Hati
+                </button>
+                <button onclick="filterCategory('Kehidupan')" class="cat-filter-btn px-4 py-2 rounded-full bg-white text-gray-600 hover:bg-sage-100 text-xs font-medium shadow-sm transition-all" data-cat="Kehidupan">
+                    ☕ Cerita Harian
+                </button>
+            </div>
+
+            <!-- Blog Grid -->
+            <div id="blogGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- JS Populated Blog Cards -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-sage-700 text-white py-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center border-b border-sage-600 pb-8 mb-8">
+                <div class="md:col-span-6 space-y-3">
+                    <h3 class="font-serif text-2xl font-bold tracking-wide">Rifka Amalia</h3>
+                    <p class="text-sage-200 text-sm max-w-md">
+                        Terima kasih telah berkunjung ke ruang musik dan cerita saya. Semoga melodi dan catatan di sini bisa mewarnai hari-harimu!
+                    </p>
+                </div>
+
+                <div class="md:col-span-6 flex flex-col sm:flex-row items-start sm:items-center justify-start md:justify-end gap-4">
+                    <a href="https://www.instagram.com/strlv_nayy?stkn=amR1Z24xNnd4ZGVhHALO" target="_blank" rel="noopener noreferrer"
+                       class="px-5 py-3 rounded-full bg-sage-600 hover:bg-sage-500 text-white font-medium text-sm flex items-center gap-3 transition-all border border-sage-500 shadow-sm">
+                        <i class="fa-brands fa-instagram text-xl text-blush-300"></i>
+                        <span>@strlv_nayy</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between text-xs text-sage-300 gap-4">
+                <p>&copy; 2026 Rifka Amalia. Dibuat dengan cinta & irama musik.</p>
+                <div class="flex gap-4">
+                    <a href="#home" class="hover:text-white transition-colors">Ke Atas ↑</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Full Article View -->
+    <div id="articleModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-sage-100 p-6 sm:p-8 relative animate-fadeIn">
+            <button onclick="closeModal('articleModal')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-sage-100 hover:bg-sage-200 text-sage-700 flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <span id="modalCategory" class="px-3 py-1 rounded-full bg-blush-100 text-sage-700 text-xs font-semibold">Category</span>
+            <h2 id="modalTitle" class="font-serif text-2xl sm:text-3xl font-bold text-sage-700 mt-3 mb-2">Article Title</h2>
+            <p id="modalMeta" class="text-xs text-gray-400 mb-6">Dipublikasikan pada 29 September 2026</p>
+
+            <div class="rounded-2xl overflow-hidden mb-6 h-64 sm:h-80">
+                <img id="modalImage" src="" alt="Post Image" class="w-full h-full object-cover">
+            </div>
+
+            <div id="modalContent" class="text-gray-700 leading-relaxed text-sm sm:text-base space-y-4 mb-8">
+                <!-- Detailed Text -->
+            </div>
+
+            <!-- Comment Section inside Modal -->
+            <div class="border-t border-sage-100 pt-6">
+                <h4 class="font-serif font-bold text-lg text-sage-700 mb-4">Komentar Pembaca</h4>
+                
+                <!-- Comment Input -->
+                <div class="flex gap-3 mb-6">
+                    <input type="text" id="commentAuthor" placeholder="Nama Anda" class="w-1/3 px-3 py-2 rounded-xl bg-sage-50 border border-sage-200 text-xs focus:outline-none focus:ring-1 focus:ring-sage-400">
+                    <input type="text" id="commentText" placeholder="Tulis komentar..." class="w-2/3 px-3 py-2 rounded-xl bg-sage-50 border border-sage-200 text-xs focus:outline-none focus:ring-1 focus:ring-sage-400">
+                    <button onclick="addComment()" class="px-4 py-2 rounded-xl bg-sage-500 text-white text-xs font-medium hover:bg-sage-600 transition-colors">Kirim</button>
+                </div>
+
+                <!-- Comment List -->
+                <div id="commentList" class="space-y-3 max-h-48 overflow-y-auto pr-1">
+                    <!-- JS populated comments -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Add New Post -->
+    <div id="addPostModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-sage-100 p-6 sm:p-8 relative">
+            <button onclick="closeModal('addPostModal')" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-sage-100 text-sage-700 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <h3 class="font-serif text-2xl font-bold text-sage-700 mb-4">Tulis Artikel Baru</h3>
+
+            <form id="addPostForm" onsubmit="handleCreatePost(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Judul Artikel</label>
+                    <input type="text" id="newTitle" required placeholder="Contoh: Lagu Akustik Favorit Minggu Ini" class="w-full px-4 py-2.5 rounded-xl bg-sage-50 border border-sage-200 text-sm focus:outline-none focus:ring-2 focus:ring-sage-300">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Kategori</label>
+                        <select id="newCategory" class="w-full px-4 py-2.5 rounded-xl bg-sage-50 border border-sage-200 text-sm focus:outline-none focus:ring-2 focus:ring-sage-300">
+                            <option value="Musik">🎵 Musik & Lagu</option>
+                            <option value="Mood">🌸 Suasana Hati</option>
+                            <option value="Kehidupan">☕ Cerita Harian</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">URL Gambar Cover</label>
+                        <input type="url" id="newImage" placeholder="https://..." class="w-full px-4 py-2.5 rounded-xl bg-sage-50 border border-sage-200 text-sm focus:outline-none focus:ring-2 focus:ring-sage-300">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">Isi Artikel</label>
+                    <textarea id="newContent" rows="4" required placeholder="Tuliskan cerita atau ulasan lagu di sini..." class="w-full px-4 py-2.5 rounded-xl bg-sage-50 border border-sage-200 text-sm focus:outline-none focus:ring-2 focus:ring-sage-300"></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3 rounded-xl bg-sage-500 hover:bg-sage-600 text-white font-medium text-sm shadow-md transition-all">
+                    Publikasikan Artikel
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. Audio Player & Playlist Data ---
+        const playlist = [
+            {
+                title: "Sunset Acoustic Harmony",
+                artist: "Rifka's Choice",
+                genre: "Acoustic Chill",
+                cover: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=400&q=80",
+                duration: "2:30",
+                audioUrl: "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3"
+            },
+            {
+                title: "Soft Lofi Beats for Relaxing",
+                artist: "Chill Chill Station",
+                genre: "Lofi / Relax",
+                cover: "https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=400&q=80",
+                duration: "3:15",
+                audioUrl: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3?filename=relaxing-light-background-music-108740.mp3"
+            },
+            {
+                title: "Upbeat Morning Energy",
+                artist: "Sunny Vibes",
+                genre: "Pop / Energetic",
+                cover: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=400&q=80",
+                duration: "2:45",
+                audioUrl: "https://cdn.pixabay.com/download/audio/2022/10/14/audio_9939f7922d.mp3?filename=upbeat-pop-124482.mp3"
+            }
+        ];
+
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+        const audio = new Audio(playlist[0].audioUrl);
+
+        // Elements
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const playerCover = document.getElementById('playerCover');
+        const playerTitle = document.getElementById('playerTitle');
+        const playerArtist = document.getElementById('playerArtist');
+        const playerGenre = document.getElementById('playerGenre');
+        const progressBar = document.getElementById('progressBar');
+        const currentTimeEl = document.getElementById('currentTime');
+        const durationEl = document.getElementById('duration');
+        const playlistItemsEl = document.getElementById('playlistItems');
+
+        function loadTrack(index) {
+            const track = playlist[index];
+            playerTitle.textContent = track.title;
+            playerArtist.textContent = track.artist;
+            playerGenre.textContent = track.genre;
+            playerCover.src = track.cover;
+            durationEl.textContent = track.duration;
+            audio.src = track.audioUrl;
+            renderPlaylistUI();
+        }
+
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                playIcon.classList.replace('fa-pause', 'fa-play');
+                playIcon.classList.remove('ml-0');
+                playIcon.classList.add('ml-1');
+            } else {
+                audio.play().catch(e => console.log("Audio play allowed on user click"));
+                playIcon.classList.replace('fa-play', 'fa-pause');
+                playIcon.classList.remove('ml-1');
+            }
+            isPlaying = !isPlaying;
+        }
+
+        playPauseBtn.addEventListener('click', togglePlay);
+
+        nextBtn.addEventListener('click', () => {
+            currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+            loadTrack(currentTrackIndex);
+            if (isPlaying) audio.play();
+        });
+
+        prevBtn.addEventListener('click', () => {
+            currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrackIndex);
+            if (isPlaying) audio.play();
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                const pct = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${pct}%`;
+                
+                const mins = Math.floor(audio.currentTime / 60);
+                const secs = Math.floor(audio.currentTime % 60);
+                currentTimeEl.textContent = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+        });
+
+        function renderPlaylistUI() {
+            playlistItemsEl.innerHTML = playlist.map((item, idx) => `
+                <div onclick="selectTrack(${idx})" class="p-3 rounded-2xl flex items-center justify-between cursor-pointer transition-all ${idx === currentTrackIndex ? 'bg-sage-200/80 text-sage-800 font-semibold' : 'hover:bg-sage-50 text-gray-600'}">
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <div class="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+                            <img src="${item.cover}" class="w-full h-full object-cover">
+                        </div>
+                        <div class="truncate">
+                            <p class="text-xs truncate">${item.title}</p>
+                            <p class="text-[10px] text-gray-400 font-normal">${item.artist}</p>
+                        </div>
+                    </div>
+                    <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/60 text-sage-700">${item.duration}</span>
+                </div>
+            `).join('');
+        }
+
+        function selectTrack(idx) {
+            currentTrackIndex = idx;
+            loadTrack(idx);
+            if (!isPlaying) togglePlay();
+            else audio.play();
+        }
+
+        // --- 2. Mood & Vibe Recommendation Logic ---
+        const moodData = {
+            relaxed: {
+                icon: "🌿",
+                title: "Rekomendasi Suasana Rileks & Santai",
+                desc: "Musik acoustic indie soft dan lofi beat sangat pas untuk melepaskan penat. Duduklah di tepi jendela dengan secangkir kopi atau teh hangat.",
+                genre: "Genre: Acoustic Chill, Lofi, Ambient Soft"
+            },
+            happy: {
+                icon: "✨",
+                title: "Rekomendasi Suasana Ceria & Bahagia",
+                desc: "Irama Pop manis dengan sentuhan piano ceria! Sangat cocok untuk menemani harimu yang penuh senyum dan keceriaan.",
+                genre: "Genre: Pop Acoustic, Upbeat Chill, Feel-Good Melodies"
+            },
+            energetic: {
+                icon: "⚡",
+                title: "Rekomendasi Penambah Semangat",
+                desc: "Beat musik dinamis yang bikin pengen goyang dan fokus belajar atau menyelesaikan pekerjaan dengan lebih cepat!",
+                genre: "Genre: Synth-Pop, Energetic Beats, Indie Rock"
+            },
+            melancholic: {
+                icon: "🌧️",
+                title: "Rekomendasi Suasana Syahdu & Syahdu",
+                desc: "Lagu-lagu balada lembut dan gesekan biola/piano yang menyentuh perasaan. Biarkan emosimu mengalir tenang bersama nada.",
+                genre: "Genre: Piano Ballad, Acoustic Soul, Soft Strings"
+            }
+        };
+
+        function selectMood(moodKey) {
+            document.querySelectorAll('.mood-btn').forEach(btn => {
+                if (btn.dataset.mood === moodKey) {
+                    btn.classList.add('bg-sage-200', 'border-sage-300');
+                } else {
+                    btn.classList.remove('bg-sage-200', 'border-sage-300');
+                }
+            });
+
+            const data = moodData[moodKey];
+            document.getElementById('moodIcon').textContent = data.icon;
+            document.getElementById('moodTitle').textContent = data.title;
+            document.getElementById('moodDesc').textContent = data.desc;
+            document.getElementById('moodGenreTag').textContent = data.genre;
+        }
+
+        // --- 3. Dynamic Blog Engine ---
+        let blogPosts = [
+            {
+                id: 1,
+                title: "Mengapa Musik Menjadi Penyelamat Suasana Hati Saya",
+                category: "Mood",
+                date: "28 Sep 2026",
+                image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80",
+                excerpt: "Kadang kala hari terasa begitu melelahkan. Namun, hanya dengan menyalakan satu lagu favorit, beban pikiran seolah perlahan memudar...",
+                content: "Sebagai seseorang yang sangat menyukai musik, saya selalu merasa kagum bagaimana sebuah nada dan lirik bisa mengubah emosi seseorang secara drastis.\n\nSaat pikiran merasa penat atau stres, alunan musik yang santai seperti lofi atau acoustic selalu berhasil menenangkan jiwa. Musik memberikan ruang aman bagi saya untuk mengekspresikan apa yang dirasakan tanpa harus diucapkan.",
+                likes: 12,
+                comments: [
+                    { author: "Siti", text: "Sama banget Kak Rifka! Musik lofi emang paling pas pas lagi capek." }
+                ]
+            },
+            {
+                id: 2,
+                title: "Eksplorasi Lagu Indie Akustik Baru yang Wajib Didengar",
+                category: "Musik",
+                date: "25 Sep 2026",
+                image: "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=600&q=80",
+                excerpt: "Menemukan lagu-lagu underrated adalah hobi yang sangat menyenangkan. Ini dia 3 rekomendasi lagu indie akustik minggu ini!",
+                content: "Salah satu kesenangan terbesar saya adalah menemukan lagu-lagu baru yang jarang terdengar di radio utama tapi memiliki kualitas suara dan lirik yang begitu dalam.\n\nMinggu ini saya menemukan beberapa lagu akustik indie dengan alunan gitar yang sangat petikannya menenangkan. Coba dengerin playlist favorit saya di pemutar musik di atas ya!",
+                likes: 24,
+                comments: []
+            },
+            {
+                id: 3,
+                title: "Rutinitas Sore Hari: Teh Hangat, Musik, dan Catatan Harian",
+                category: "Kehidupan",
+                date: "20 Sep 2026",
+                image: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=600&q=80",
+                excerpt: "Menikmati senja tak lengkap rasanya tanpa lagu favorit yang diputar pelan di sudut kamar...",
+                content: "Sore hari adalah waktu favorit saya untuk me-time. Menyiapkan cangkir teh hangat, membuka buku catatan, dan memutar lagu-lagu bersuasana hangat adalah cara terbaik untuk menutup hari dengan penuh rasa syukur.",
+                likes: 18,
+                comments: []
+            }
+        ];
+
+        let activePostId = null;
+
+        function renderBlogPosts(categoryFilter = 'all') {
+            const blogGrid = document.getElementById('blogGrid');
+            const filtered = categoryFilter === 'all' 
+                ? blogPosts 
+                : blogPosts.filter(p => p.category === categoryFilter);
+
+            blogGrid.innerHTML = filtered.map(post => `
+                <article class="glass-card rounded-3xl overflow-hidden border border-sage-100 hover:shadow-xl transition-all duration-300 flex flex-col group">
+                    <div class="relative h-48 sm:h-56 overflow-hidden">
+                        <img src="${post.image}" alt="${post.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-4 left-4 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-sage-700 font-semibold text-xs shadow-sm">
+                            ${post.category}
+                        </span>
+                    </div>
+
+                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                        <div class="space-y-2">
+                            <span class="text-xs text-gray-400"><i class="fa-regular fa-calendar-check mr-1"></i> ${post.date}</span>
+                            <h3 class="font-serif font-bold text-xl text-sage-700 hover:text-sage-500 transition-colors cursor-pointer" onclick="openArticleModal(${post.id})">
+                                ${post.title}
+                            </h3>
+                            <p class="text-xs sm:text-sm text-gray-600 line-clamp-3 leading-relaxed">
+                                ${post.excerpt}
+                            </p>
+                        </div>
+
+                        <div class="pt-4 border-t border-sage-100 flex items-center justify-between">
+                            <button onclick="likePost(${post.id})" class="text-xs text-blush-500 hover:text-blush-600 font-medium flex items-center gap-1.5 transition-transform active:scale-125">
+                                <i class="fa-solid fa-heart text-sm"></i>
+                                <span>${post.likes} Suka</span>
+                            </button>
+
+                            <button onclick="openArticleModal(${post.id})" class="text-xs font-semibold text-sage-700 hover:text-sage-500 flex items-center gap-1">
+                                Baca Selengkapnya <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `).join('');
+        }
+
+        function filterCategory(cat) {
+            document.querySelectorAll('.cat-filter-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-sage-500', 'text-white');
+                    btn.classList.remove('bg-white', 'text-gray-600');
+                } else {
+                    btn.classList.remove('bg-sage-500', 'text-white');
+                    btn.classList.add('bg-white', 'text-gray-600');
+                }
+            });
+            renderBlogPosts(cat);
+        }
+
+        function likePost(id) {
+            const post = blogPosts.find(p => p.id === id);
+            if (post) {
+                post.likes++;
+                renderBlogPosts();
+            }
+        }
+
+        // Modal Reader
+        function openArticleModal(id) {
+            const post = blogPosts.find(p => p.id === id);
+            if (!post) return;
+
+            activePostId = id;
+            document.getElementById('modalTitle').textContent = post.title;
+            document.getElementById('modalCategory').textContent = post.category;
+            document.getElementById('modalMeta').textContent = `Dipublikasikan oleh Rifka Amalia pada ${post.date}`;
+            document.getElementById('modalImage').src = post.image;
+            document.getElementById('modalContent').innerHTML = post.content.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+            renderCommentsUI(post);
+            document.getElementById('articleModal').classList.remove('hidden');
+        }
+
+        function renderCommentsUI(post) {
+            const commentList = document.getElementById('commentList');
+            if (!post.comments || post.comments.length === 0) {
+                commentList.innerHTML = `<p class="text-xs text-gray-400 italic">Belum ada komentar. Jadilah yang pertama!</p>`;
+                return;
+            }
+
+            commentList.innerHTML = post.comments.map(c => `
+                <div class="p-3 rounded-xl bg-sage-50/80 border border-sage-100 text-xs">
+                    <p class="font-bold text-sage-700 mb-0.5">${c.author}</p>
+                    <p class="text-gray-600">${c.text}</p>
+                </div>
+            `).join('');
+        }
+
+        function addComment() {
+            if (!activePostId) return;
+            const authorInput = document.getElementById('commentAuthor');
+            const textInput = document.getElementById('commentText');
+
+            if (!authorInput.value.trim() || !textInput.value.trim()) return;
+
+            const post = blogPosts.find(p => p.id === activePostId);
+            if (post) {
+                post.comments.push({
+                    author: authorInput.value.trim(),
+                    text: textInput.value.trim()
+                });
+                renderCommentsUI(post);
+                authorInput.value = '';
+                textInput.value = '';
+            }
+        }
+
+        function openAddPostModal() {
+            document.getElementById('addPostModal').classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        function handleCreatePost(event) {
+            event.preventDefault();
+            const title = document.getElementById('newTitle').value;
+            const category = document.getElementById('newCategory').value;
+            const image = document.getElementById('newImage').value || 'https://images.unsplash.com/photo-1459749411175-04bf5292ceea?auto=format&fit=crop&w=600&q=80';
+            const content = document.getElementById('newContent').value;
+
+            const newPost = {
+                id: Date.now(),
+                title,
+                category,
+                date: 'Hari ini',
+                image,
+                excerpt: content.substring(0, 90) + '...',
+                content,
+                likes: 0,
+                comments: []
+            };
+
+            blogPosts.unshift(newPost);
+            renderBlogPosts();
+            closeModal('addPostModal');
+            document.getElementById('addPostForm').reset();
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Initialize Page
+        window.onload = function() {
+            loadTrack(0);
+            renderBlogPosts();
+        };
+    </script>
+</body>
+</html>
